@@ -4,7 +4,7 @@ import CFourUIPlayable from "./CFourUIPlayable.tsx"
 function App() {
   return (
     <div className="App">
-      <CFourUIPlayable column={7} row={6} moves={[]}/>
+      <CFourUIPlayable columns={7} rows={6} />
     </div>
   );
 }

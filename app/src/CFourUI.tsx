@@ -1,9 +1,9 @@
 import React from "react";
 
 export interface CFourUIProps {
-    row: number;
-    column: number;
-    moves: number[];
+    rows: number;
+    columns: number;
+    moves?: number[];
     moveIndex?: number;
     circle_radius?: number;
     circle_margin?: number;
@@ -15,6 +15,7 @@ export interface CFourUIProps {
 }
 
 const defaultProps: Partial<CFourUIProps> = {
+    moves: [],
     moveIndex: -1,
     circle_radius: 40,
     circle_margin: 4,
@@ -25,9 +26,9 @@ const defaultProps: Partial<CFourUIProps> = {
 };
 
 const CFourUI = ({
-    row,
-    column,
-    moves,
+    rows,
+    columns,
+    moves = [],
     moveIndex = -1,
     circle_radius = 40,
     circle_margin = 4,
@@ -42,8 +43,8 @@ const CFourUI = ({
     const createBoardFromMoves = () => {
         const board: number[][] = [];
 
-        for (let i = 0; i <= column; i++) {
-            board.push(new Array(row).fill(0));
+        for (let i = 0; i <= columns; i++) {
+            board.push(new Array(rows).fill(0));
         }
 
         if (moves) {
@@ -74,23 +75,37 @@ const CFourUI = ({
             fillColor = player_b_color;
         }
 
-        return (
+        const useMoveIndex = moveIndex >= 0;
+
+        const columnCount = useMoveIndex
+            ? moves.slice(0, moveIndex).filter((move) => move === column).length
+            : moves.filter((move) => move === column).length;
+        const isLastMove =
+            columnCount === rows - row &&
+            column ===
+                (useMoveIndex ? moves[moveIndex - 1] : moves[moves.length - 1]);
+
+        const circleElement = (
             <circle
                 key={`${row}-${column}`}
                 cx={column * circle_radius * 2 + circle_radius}
                 cy={row * circle_radius * 2 + circle_radius}
                 r={circle_radius - circle_margin}
                 fill={fillColor}
-            ></circle>
+                stroke={isLastMove ? "black" : undefined}
+                strokeWidth={3}
+            />
         );
+
+        return circleElement;
     };
 
     const board = createBoardFromMoves();
 
     const generateCircles = () => {
         const circles: JSX.Element[] = [];
-        for (let columnIndex = 0; columnIndex < column; columnIndex++) {
-            for (let rowIndex = 0; rowIndex < row; rowIndex++) {
+        for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
+            for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
                 circles.push(
                     <g key={`${rowIndex}-${columnIndex}`}>
                         {getCircle(rowIndex, columnIndex, board)}
@@ -100,7 +115,9 @@ const CFourUI = ({
                             width={circle_radius * 2}
                             height={circle_radius * 2}
                             fill="transparent"
-                            onClick={() => onClick && onClick(rowIndex, columnIndex)}
+                            onClick={() =>
+                                onClick && onClick(rowIndex, columnIndex)
+                            }
                         />
                     </g>
                 );
@@ -112,11 +129,11 @@ const CFourUI = ({
     return (
         <div id="cfour-board">
             <svg
-                width={column * 80}
-                height={row * 80}
+                width={columns * circle_radius * 2}
+                height={rows * circle_radius * 2}
                 xmlns="http://www.w3.org/2000/svg"
                 style={style}
-                >
+            >
                 {generateCircles()}
             </svg>
         </div>

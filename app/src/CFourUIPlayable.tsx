@@ -2,8 +2,8 @@ import React, { useState } from "react";
 import CFourUI, { CFourUIProps } from "./CFourUI.tsx";
 
 const CFourUIPlayable = ({
-    row,
-    column,
+    rows,
+    columns,
     moves,
     moveIndex,
     circle_radius,
@@ -14,7 +14,7 @@ const CFourUIPlayable = ({
     player_b_color,
 }: CFourUIProps) => {
     const [currentPlayer, setCurrentPlayer] = useState(1);
-    const [gameMoves, setGameMoves] = useState(moves);
+    const [gameMoves, setGameMoves] = useState(moves || []);
 
     const handleColumnClick = (clickedRow: number, clickedColumn: number) => {
         const newMoves = [...gameMoves, clickedColumn];
@@ -25,8 +25,8 @@ const CFourUIPlayable = ({
     return (
         <div>
             <CFourUI
-                row={row}
-                column={column}
+                rows={rows}
+                columns={columns}
                 moves={gameMoves}
                 moveIndex={moveIndex}
                 circle_radius={circle_radius}

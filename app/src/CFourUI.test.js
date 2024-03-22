@@ -4,7 +4,7 @@ import CFourUI from './CFourUI.tsx';
 
 describe("CFourUI", () => {
   const ui = (
-    <CFourUI column={7} row={6} moves={[0,1,2,3]}/>
+    <CFourUI columns={7} rows={6} moves={[0,1,2,3]}/>
   );
 
   test('renders CFourUI', () => {
@@ -15,7 +15,7 @@ describe("CFourUI", () => {
 
   test("moves appear correctly", () => {
     const ui = (
-      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={3}/>
+      <CFourUI columns={7} rows={6} moves={[0,4,2,3]} moveIndex={3}/>
     );
 
     const component = render(ui);
@@ -35,7 +35,7 @@ describe("CFourUI", () => {
 
   test("all moves appear when index is minus one", () => {
     const ui = (
-      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={-1}/>
+      <CFourUI columns={7} rows={6} moves={[0,4,2,3]} moveIndex={-1}/>
     );
 
     const component = render(ui);
@@ -60,7 +60,7 @@ describe("CFourUI", () => {
 
   test("no moves appear when index is zero", () => {
     const ui = (
-      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={0}/>
+      <CFourUI columns={7} rows={6} moves={[0,4,2,3]} moveIndex={0}/>
     );
 
     const component = render(ui);
@@ -74,7 +74,7 @@ describe("CFourUI", () => {
 
   test("more moves added to a column", () => {
     const ui = (
-      <CFourUI column={7} row={6} moves={[3,3,3,3,3,3,3]} moveIndex={7}/>
+      <CFourUI columns={7} rows={6} moves={[3,3,3,3,3,3,3]} moveIndex={7}/>
     );
 
     const component = render(ui);
