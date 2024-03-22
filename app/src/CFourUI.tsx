@@ -4,26 +4,49 @@ interface CFourUIProps {
     row: number;
     column: number;
     moves: number[];
-    moveIndex: number;
-    background_color: string;
-    empty_color: string;
-    player_a_color: string;
-    player_b_color: string;
+    moveIndex?: number;
+    circle_diameter?: number;
+    circle_margin?: number;
+    background_color?: string;
+    empty_color?: string;
+    player_a_color?: string;
+    player_b_color?: string;
 }
 
+const defaultProps: Partial<CFourUIProps> = {
+    moveIndex: -1,
+    circle_diameter: 80,
+    circle_margin: 40,
+    empty_color: "white",
+    background_color: "gray",
+    player_a_color: "red",
+    player_b_color: "yellow",
+};
 
-const CFourUI = ({ row, column, moves, moveIndex, empty_color, background_color, player_a_color, player_b_color }: CFourUIProps) => {
+const CFourUI = ({
+    row,
+    column,
+    moves,
+    moveIndex = -1,
+    circle_diameter = 80,
+    circle_margin = 40,
+    empty_color = "white",
+    background_color = "gray",
+    player_a_color = "red",
+    player_b_color = "yellow",
+}: CFourUIProps) => {
     const style = { backgroundColor: background_color };
 
     const createBoardFromMoves = () => {
         const board: number[][] = [];
+
         for (let i = 0; i <= column; i++) {
             board.push(new Array(row).fill(0));
         }
 
         if (moves) {
             moves.forEach((move, index) => {
-                if (index >= moveIndex) {
+                if (index >= moveIndex && moveIndex > 0) {
                     return;
                 }
                 if (!isNaN(move)) {
@@ -46,14 +69,14 @@ const CFourUI = ({ row, column, moves, moveIndex, empty_color, background_color,
         if (colorCode === 1) {
             fillColor = player_a_color;
         } else if (colorCode === 2) {
-            fillColor = player_b_color
+            fillColor = player_b_color;
         }
 
         return (
             <circle
                 key={`${row}-${column}`}
-                cx={column * 80 + 40}
-                cy={row * 80 + 40}
+                cx={column * circle_diameter + circle_margin}
+                cy={row * circle_diameter + circle_margin}
                 r={32}
                 fill={fillColor}
             ></circle>
@@ -85,5 +108,7 @@ const CFourUI = ({ row, column, moves, moveIndex, empty_color, background_color,
         </div>
     );
 };
+
+CFourUI.defaultProps = defaultProps;
 
 export default CFourUI;
