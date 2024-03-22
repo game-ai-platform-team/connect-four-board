@@ -20,8 +20,9 @@ describe("CFourUI", () => {
 
     const component = render(ui);
     const board = component.container.querySelector("#cfour-board");
-    const circle_red = board?.children.item(0)?.children.item(5);
-    const circle_yellow = board?.children.item(0)?.children.item(29);
+    const circles = board?.querySelectorAll("circle");
+    const circle_red = circles?.[5]
+    const circle_yellow = circles?.[29]
 
     expect(circle_red?.getAttribute("fill")).toBe("red");
     expect(circle_yellow?.getAttribute("fill")).toBe("yellow");
@@ -39,10 +40,12 @@ describe("CFourUI", () => {
 
     const component = render(ui);
     const board = component.container.querySelector("#cfour-board");
-    const circle_red_1 = board?.children.item(0)?.children.item(5);
-    const circle_yellow_1 = board?.children.item(0)?.children.item(29);
-    const circle_red_2 = board?.children.item(0)?.children.item(17);
-    const circle_yellow_2 = board?.children.item(0)?.children.item(23)
+    const circles = board?.querySelectorAll("circle");
+    const circle_red_1 = circles?.[5]
+    const circle_yellow_1 = circles?.[29]
+
+    const circle_red_2 = circles?.[17]
+    const circle_yellow_2 = circles?.[23]
 
     expect(circle_red_1?.getAttribute("fill")).toBe("red");
     expect(circle_yellow_1?.getAttribute("fill")).toBe("yellow");
@@ -76,12 +79,13 @@ describe("CFourUI", () => {
 
     const component = render(ui);
     const board = component.container.querySelector("#cfour-board");
-    const circle_red_1 = board?.children.item(0)?.children.item(23);
-    const circle_yellow_1 = board?.children.item(0)?.children.item(22);
-    const circle_red_2 = board?.children.item(0)?.children.item(21);
-    const circle_yellow_2 = board?.children.item(0)?.children.item(20)
-    const circle_red_3 = board?.children.item(0)?.children.item(19);
-    const circle_yellow_3 = board?.children.item(0)?.children.item(18)
+    const circles = board?.querySelectorAll("circle");
+    const circle_red_1 = circles?.[23]
+    const circle_yellow_1 = circles?.[22]
+    const circle_red_2 = circles?.[21];
+    const circle_yellow_2 = circles?.[20]
+    const circle_red_3 = circles?.[19]
+    const circle_yellow_3 = circles?.[18]
 
     expect(circle_red_1?.getAttribute("fill")).toBe("red");
     expect(circle_yellow_1?.getAttribute("fill")).toBe("yellow");

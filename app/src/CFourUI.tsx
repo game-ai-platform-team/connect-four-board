@@ -48,7 +48,7 @@ const CFourUI = ({
 
         if (moves) {
             moves.forEach((move, index) => {
-                if (index >= moveIndex && moveIndex > 0) {
+                if (index >= moveIndex && moveIndex >= 0) {
                     return;
                 }
                 if (!isNaN(move)) {
