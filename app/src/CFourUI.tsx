@@ -11,6 +11,7 @@ export interface CFourUIProps {
     empty_color?: string;
     player_a_color?: string;
     player_b_color?: string;
+    highlight_color?: string;
     onClick?: (row: number, column: number) => void;
 }
 
@@ -23,6 +24,7 @@ const defaultProps: Partial<CFourUIProps> = {
     background_color: "gray",
     player_a_color: "red",
     player_b_color: "yellow",
+    highlight_color: "black"
 };
 
 const CFourUI = ({
@@ -36,6 +38,7 @@ const CFourUI = ({
     background_color = "gray",
     player_a_color = "red",
     player_b_color = "yellow",
+    highlight_color = "black",
     onClick,
 }: CFourUIProps) => {
     const style = { backgroundColor: background_color };
@@ -92,7 +95,7 @@ const CFourUI = ({
                 cy={row * circle_radius * 2 + circle_radius}
                 r={circle_radius - circle_margin}
                 fill={fillColor}
-                stroke={isLastMove ? "black" : undefined}
+                stroke={isLastMove ? highlight_color : undefined}
                 strokeWidth={3}
             />
         );
