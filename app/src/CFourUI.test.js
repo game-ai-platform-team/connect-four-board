@@ -1,3 +1,4 @@
+import React from "react";
 import { render } from '@testing-library/react';
 import CFourUI from './CFourUI.tsx';
 
@@ -10,5 +11,88 @@ describe("CFourUI", () => {
     const component = render(ui);
     const board = component.container.querySelector("#cfour-board");
         expect(board).not.toBeNull();
+  });
+
+  test("moves appear correctly", () => {
+    const ui = (
+      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={3}/>
+    );
+
+    const component = render(ui);
+    const board = component.container.querySelector("#cfour-board");
+    const circle_red = board?.children.item(0)?.children.item(5);
+    const circle_yellow = board?.children.item(0)?.children.item(29);
+
+    expect(circle_red?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow?.getAttribute("fill")).toBe("yellow");
+
+    const whiteCircles = Array.from(
+        board?.querySelectorAll("circle") || [],
+    ).filter((circle) => circle.getAttribute("fill") === "white");
+    expect(whiteCircles.length).toBe(6 * 7 -3);
+  });
+
+  test("all moves appear when index is minus one", () => {
+    const ui = (
+      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={-1}/>
+    );
+
+    const component = render(ui);
+    const board = component.container.querySelector("#cfour-board");
+    const circle_red_1 = board?.children.item(0)?.children.item(5);
+    const circle_yellow_1 = board?.children.item(0)?.children.item(29);
+    const circle_red_2 = board?.children.item(0)?.children.item(17);
+    const circle_yellow_2 = board?.children.item(0)?.children.item(23)
+
+    expect(circle_red_1?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow_1?.getAttribute("fill")).toBe("yellow");
+    expect(circle_red_2?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow_2?.getAttribute("fill")).toBe("yellow");
+
+    const whiteCircles = Array.from(
+        board?.querySelectorAll("circle") || [],
+    ).filter((circle) => circle.getAttribute("fill") === "white");
+    expect(whiteCircles.length).toBe(6 * 7 -4);
+  });
+
+  test("no moves appear when index is zero", () => {
+    const ui = (
+      <CFourUI column={7} row={6} moves={[0,4,2,3]} moveIndex={0}/>
+    );
+
+    const component = render(ui);
+    const board = component.container.querySelector("#cfour-board");
+
+    const whiteCircles = Array.from(
+        board?.querySelectorAll("circle") || [],
+    ).filter((circle) => circle.getAttribute("fill") === "white");
+    expect(whiteCircles.length).toBe(6 * 7);
+  });
+
+  test("more moves added to a column", () => {
+    const ui = (
+      <CFourUI column={7} row={6} moves={[3,3,3,3,3,3,3]} moveIndex={7}/>
+    );
+
+    const component = render(ui);
+    const board = component.container.querySelector("#cfour-board");
+    const circle_red_1 = board?.children.item(0)?.children.item(23);
+    const circle_yellow_1 = board?.children.item(0)?.children.item(22);
+    const circle_red_2 = board?.children.item(0)?.children.item(21);
+    const circle_yellow_2 = board?.children.item(0)?.children.item(20)
+    const circle_red_3 = board?.children.item(0)?.children.item(19);
+    const circle_yellow_3 = board?.children.item(0)?.children.item(18)
+
+    expect(circle_red_1?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow_1?.getAttribute("fill")).toBe("yellow");
+    expect(circle_red_2?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow_2?.getAttribute("fill")).toBe("yellow");
+    expect(circle_red_3?.getAttribute("fill")).toBe("red");
+    expect(circle_yellow_3?.getAttribute("fill")).toBe("yellow");
+
+    const whiteCircles = Array.from(
+        board?.querySelectorAll("circle") || [],
+    ).filter((circle) => circle.getAttribute("fill") === "white");
+    expect(whiteCircles.length).toBe(6 * 7 -6);
   });
 });

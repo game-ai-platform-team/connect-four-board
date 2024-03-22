@@ -1,6 +1,6 @@
 import React from "react";
 
-interface CFourUIProps {
+export interface CFourUIProps {
     row: number;
     column: number;
     moves: number[];
@@ -11,6 +11,7 @@ interface CFourUIProps {
     empty_color?: string;
     player_a_color?: string;
     player_b_color?: string;
+    onClick?: (row: number, column: number) => void;
 }
 
 const defaultProps: Partial<CFourUIProps> = {
@@ -28,12 +29,13 @@ const CFourUI = ({
     column,
     moves,
     moveIndex = -1,
-    circle_radius= 40,
+    circle_radius = 40,
     circle_margin = 4,
     empty_color = "white",
     background_color = "gray",
     player_a_color = "red",
     player_b_color = "yellow",
+    onClick,
 }: CFourUIProps) => {
     const style = { backgroundColor: background_color };
 
@@ -86,10 +88,22 @@ const CFourUI = ({
     const board = createBoardFromMoves();
 
     const generateCircles = () => {
-        const circles = [];
+        const circles: JSX.Element[] = [];
         for (let columnIndex = 0; columnIndex < column; columnIndex++) {
             for (let rowIndex = 0; rowIndex < row; rowIndex++) {
-                circles.push(getCircle(rowIndex, columnIndex, board));
+                circles.push(
+                    <g key={`${rowIndex}-${columnIndex}`}>
+                        {getCircle(rowIndex, columnIndex, board)}
+                        <rect
+                            x={columnIndex * circle_radius * 2}
+                            y={rowIndex * circle_radius * 2}
+                            width={circle_radius * 2}
+                            height={circle_radius * 2}
+                            fill="transparent"
+                            onClick={() => onClick && onClick(rowIndex, columnIndex)}
+                        />
+                    </g>
+                );
             }
         }
         return circles;
@@ -102,7 +116,7 @@ const CFourUI = ({
                 height={row * 80}
                 xmlns="http://www.w3.org/2000/svg"
                 style={style}
-            >
+                >
                 {generateCircles()}
             </svg>
         </div>
