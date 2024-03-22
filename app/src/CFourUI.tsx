@@ -5,7 +5,7 @@ interface CFourUIProps {
     column: number;
     moves: number[];
     moveIndex?: number;
-    circle_diameter?: number;
+    circle_radius?: number;
     circle_margin?: number;
     background_color?: string;
     empty_color?: string;
@@ -15,8 +15,8 @@ interface CFourUIProps {
 
 const defaultProps: Partial<CFourUIProps> = {
     moveIndex: -1,
-    circle_diameter: 80,
-    circle_margin: 40,
+    circle_radius: 40,
+    circle_margin: 4,
     empty_color: "white",
     background_color: "gray",
     player_a_color: "red",
@@ -28,8 +28,8 @@ const CFourUI = ({
     column,
     moves,
     moveIndex = -1,
-    circle_diameter = 80,
-    circle_margin = 40,
+    circle_radius= 40,
+    circle_margin = 4,
     empty_color = "white",
     background_color = "gray",
     player_a_color = "red",
@@ -75,9 +75,9 @@ const CFourUI = ({
         return (
             <circle
                 key={`${row}-${column}`}
-                cx={column * circle_diameter + circle_margin}
-                cy={row * circle_diameter + circle_margin}
-                r={32}
+                cx={column * circle_radius * 2 + circle_radius}
+                cy={row * circle_radius * 2 + circle_radius}
+                r={circle_radius - circle_margin}
                 fill={fillColor}
             ></circle>
         );
