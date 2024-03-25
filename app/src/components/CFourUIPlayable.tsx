@@ -4,7 +4,6 @@ import CFourUI, { CFourUIProps } from "./CFourUI.tsx";
 const CFourUIPlayable = ({
     rows,
     columns,
-    moves,
     move_index,
     circle_radius,
     circle_margin,
@@ -12,16 +11,26 @@ const CFourUIPlayable = ({
     empty_color,
     player_a_color,
     player_b_color,
-}: CFourUIProps) => {
+    highlight_color,
+    gameMoves,
+    setGameMoves,
+    playMove,
+}: CFourUIProps & {
+    gameMoves: number[];
+    setGameMoves: (moves: number[]) => void;
+    playMove: (move: number) => void;
+}) => {
     const [currentPlayer, setCurrentPlayer] = useState(1);
-    const [gameMoves, setGameMoves] = useState(moves || []);
 
     const handleColumnClick = (_: number, clickedColumn: number) => {
-        const moveCount = gameMoves.filter((move) => move === clickedColumn).length
+        const moveCount = gameMoves.filter(
+            (move) => move === clickedColumn,
+        ).length;
         const newMoves = [...gameMoves, clickedColumn];
         if (moveCount < rows) {
             setGameMoves(newMoves);
             setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
+            playMove(clickedColumn)
         }
     };
 
@@ -38,6 +47,7 @@ const CFourUIPlayable = ({
                 empty_color={empty_color}
                 player_a_color={player_a_color}
                 player_b_color={player_b_color}
+                highlight_color={highlight_color}
                 onClick={handleColumnClick}
             />
         </div>

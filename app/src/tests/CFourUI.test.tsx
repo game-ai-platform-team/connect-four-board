@@ -1,5 +1,5 @@
 import { RenderResult, render } from "@testing-library/react";
-import CFourUI from "../CFourUI.tsx";
+import CFourUI from "../components/CFourUI.tsx";
 import { expect, test, describe, beforeEach } from "vitest";
 
 describe("CFourUI", () => {
