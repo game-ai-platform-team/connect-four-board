@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import CFourUI, { CFourUIProps } from "./CFourUI.tsx";
 
 const CFourUIPlayable = ({
@@ -16,10 +16,13 @@ const CFourUIPlayable = ({
     const [currentPlayer, setCurrentPlayer] = useState(1);
     const [gameMoves, setGameMoves] = useState(moves || []);
 
-    const handleColumnClick = (clickedRow: number, clickedColumn: number) => {
+    const handleColumnClick = (_: number, clickedColumn: number) => {
+        const moveCount = gameMoves.filter((move) => move === clickedColumn).length
         const newMoves = [...gameMoves, clickedColumn];
-        setGameMoves(newMoves);
-        setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
+        if (moveCount < rows) {
+            setGameMoves(newMoves);
+            setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
+        }
     };
 
     return (
