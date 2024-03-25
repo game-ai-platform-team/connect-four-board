@@ -1,10 +1,8 @@
-import React from "react";
-
 export interface CFourUIProps {
     rows: number;
     columns: number;
     moves?: number[];
-    moveIndex?: number;
+    move_index?: number;
     circle_radius?: number;
     circle_margin?: number;
     background_color?: string;
@@ -17,7 +15,7 @@ export interface CFourUIProps {
 
 const defaultProps: Partial<CFourUIProps> = {
     moves: [],
-    moveIndex: -1,
+    move_index: -1,
     circle_radius: 40,
     circle_margin: 4,
     empty_color: "white",
@@ -31,7 +29,7 @@ const CFourUI = ({
     rows,
     columns,
     moves = [],
-    moveIndex = -1,
+    move_index = -1,
     circle_radius = 40,
     circle_margin = 4,
     empty_color = "white",
@@ -42,6 +40,7 @@ const CFourUI = ({
     onClick,
 }: CFourUIProps) => {
     const style = { backgroundColor: background_color };
+    const moveIndex = move_index
 
     const createBoardFromMoves = () => {
         const board: number[][] = [];

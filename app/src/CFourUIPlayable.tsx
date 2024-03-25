@@ -5,7 +5,7 @@ const CFourUIPlayable = ({
     rows,
     columns,
     moves,
-    moveIndex,
+    move_index,
     circle_radius,
     circle_margin,
     background_color,
@@ -28,7 +28,7 @@ const CFourUIPlayable = ({
                 rows={rows}
                 columns={columns}
                 moves={gameMoves}
-                moveIndex={moveIndex}
+                move_index={move_index}
                 circle_radius={circle_radius}
                 circle_margin={circle_margin}
                 background_color={background_color}
