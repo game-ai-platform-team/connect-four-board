@@ -1,13 +1,11 @@
 import "./App.css";
 import CFourUIPlayable from "./components/CFourUIPlayable.tsx";
-import { useState } from "react";
 
 function App() {
-    const [gameMoves, setGameMoves] = useState<number[]>([]);
+    const gameMoves: number[] = []
 
     function playMove(move: number) {
-        const newMoves: number[] = [...gameMoves, move];
-        setGameMoves(newMoves);
+        gameMoves.push(move)
         console.log(move);
     }
 
