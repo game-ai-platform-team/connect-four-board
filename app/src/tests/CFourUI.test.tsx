@@ -1,11 +1,16 @@
 import React from "react";
 import { render } from '@testing-library/react';
-import CFourUI from './CFourUI.tsx';
+import CFourUI from '../CFourUI.tsx';
+import  { expect, test, describe } from 'vitest';
 
 describe("CFourUI", () => {
   const ui = (
     <CFourUI columns={7} rows={6} moves={[0,1,2,3]}/>
   );
+
+  test('hello world', () => {
+    expect(true).toBe(true)
+  }) 
 
   test('renders CFourUI', () => {
     const component = render(ui);
