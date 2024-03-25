@@ -55,5 +55,5 @@ function playMove(move: number) {
 -   `empty_color`: The color of empty spaces on the board (default: `"white"`).
 -   `player_a_color`: The color representing first player's game pieces (default: `"red"`).
 -   `player_b_color`: The color representing second player's game pieces (default: `"yellow"`).
--   `highlight_color`: The color used to highlight the last move made, set to `transparent` to disable (default: `"black"`).
+-   `highlight_color`: The color used to highlight the last move made, set to `"transparent"` to disable (default: `"black"`).
 -   `onClick` (static only): A function to handle click events on the board, called with two numbers; `row` and `column` (default: `undefined`).
