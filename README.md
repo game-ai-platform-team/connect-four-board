@@ -6,29 +6,35 @@ Two simple components to display a Connect Four board. `CFourUI` displays a boar
 
 ### `CFourUI`
 
-```TypeScript
-<CFourUI rows={6} columns={7}/>
+```HTML
+<CFourUI rows={6} columns={7} />
 ```
 
 ### `CFourUIPlayable`
 
 ```TypeScript
 // Move array
-const [gameMoves, setGameMoves] = useState([])
+const [gameMoves, setGameMoves] = useState([]);
 
-// Function to call when the user makes a move. Always used with one parameter, the column of the move.
+// Function to call when the user makes a move. Called with the number of the move column.
 function playMove(move: number) {
-    console.log(move)
+    const newMoves: number[] = [...gameMoves, move];
+    setGameMoves(newMoves);
+    console.log(move);
 }
 
 // The component with required parameters only
-<CFourUIPlayable
-    rows={6}
-    columns={7}
-    gameMoves={gameMoves}
-    setGameMoves={setGameMoves}
-    playMove={playMove}
-/>
+(
+    <div>
+        <CFourUIPlayable
+            rows={6}
+            columns={7}
+            gameMoves={gameMoves}
+            setGameMoves={setGameMoves}
+            playMove={playMove}
+        />
+    </div>
+);
 ```
 
 ### Parameters
@@ -38,7 +44,6 @@ function playMove(move: number) {
 -   `rows`: The number of rows in the Connect Four board.
 -   `columns`: The number of columns in the Connect Four board.
 -   `gameMoves` (playable only): An array of numbers representing the sequence of moves made in the game.
--   `setGameMoves` (playable only): A function to update the array of game moves.
 -   `playMove` (playable only): A function to handle the action of playing a move in the game.
 
 #### Optional
