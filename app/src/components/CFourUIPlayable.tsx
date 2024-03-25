@@ -30,7 +30,7 @@ const CFourUIPlayable = ({
         if (moveCount < rows) {
             setGameMoves(newMoves);
             setCurrentPlayer(currentPlayer === 1 ? 2 : 1);
-            playMove(clickedColumn)
+            playMove(clickedColumn);
         }
     };
 

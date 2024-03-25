@@ -22,7 +22,7 @@ const defaultProps: Partial<CFourUIProps> = {
     background_color: "gray",
     player_a_color: "red",
     player_b_color: "yellow",
-    highlight_color: "black"
+    highlight_color: "black",
 };
 
 const CFourUI = ({
@@ -40,7 +40,7 @@ const CFourUI = ({
     onClick,
 }: CFourUIProps) => {
     const style = { backgroundColor: background_color };
-    const moveIndex = move_index
+    const moveIndex = move_index;
 
     const createBoardFromMoves = () => {
         const board: number[][] = [];
@@ -121,7 +121,7 @@ const CFourUI = ({
                                 onClick && onClick(rowIndex, columnIndex)
                             }
                         />
-                    </g>
+                    </g>,
                 );
             }
         }
