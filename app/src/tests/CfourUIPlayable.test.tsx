@@ -1,19 +1,14 @@
 import { render, RenderResult, fireEvent } from "@testing-library/react";
 import CFourUIPlayable from "../components/CFourUIPlayable";
 import { expect, test, describe, beforeEach } from "vitest";
-import { useState } from "react";
 
 describe("CFourUIPlayable", () => {
     let view: RenderResult;
     let gameMoves: number[];
-    let setGameMoves: (moves: number[]) => void;
     let playMove: (move: number) => void;
 
     beforeEach(() => {
         gameMoves = [];
-        setGameMoves = (moves: number[]) => {
-            gameMoves = moves;
-        };
         playMove = (move: number) => {
             gameMoves.push(move);
         };
