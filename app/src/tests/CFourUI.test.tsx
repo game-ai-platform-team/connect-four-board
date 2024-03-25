@@ -1,4 +1,4 @@
-import { render } from "@testing-library/react";
+import { RenderResult, render } from "@testing-library/react";
 import CFourUI from "../CFourUI.tsx";
 import { expect, test, describe, beforeEach } from "vitest";
 
@@ -70,7 +70,7 @@ describe("CFourUI", () => {
                 columns={7}
                 rows={6}
                 moves={[3, 3, 3, 3, 3, 3, 3]}
-                moveIndex={7}
+                move_index={7}
             />
         );
 

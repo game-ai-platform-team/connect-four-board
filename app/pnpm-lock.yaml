@@ -50,6 +50,9 @@ dependencies:
   vite:
     specifier: ^5.0.8
     version: 5.2.6
+  web-vitals:
+    specifier: ^3.5.2
+    version: 3.5.2
 
 devDependencies:
   '@testing-library/jest-dom':
@@ -12070,6 +12073,10 @@ packages:
     resolution: {integrity: sha512-O84QOnr0icsbFGLS0O3bI5FswxzRr8/gHwWkDlQFskhSPryQXvrTMxjxGP4+iWYoauLoBvfDpkrOauZ+0iZpDA==}
     dependencies:
       minimalistic-assert: 1.0.1
+    dev: false
+
+  /web-vitals@3.5.2:
+    resolution: {integrity: sha512-c0rhqNcHXRkY/ogGDJQxZ9Im9D19hDihbzSQJrsioex+KnFgmMzBiy57Z1EjkhX/+OjyBpclDCzz2ITtjokFmg==}
     dev: false
 
   /webidl-conversions@4.0.2:
