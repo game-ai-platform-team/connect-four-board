@@ -1,5 +1,5 @@
 import { useState } from "react";
-import CFourUI, { CFourUIProps } from "./CFourUI.tsx";
+import CFourUI, { CFourUIProps } from "./CFourUI";
 
 interface CFourUIPlayableProps {
     gameMoves: number[] | number[][];

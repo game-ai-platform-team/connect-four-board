@@ -2,7 +2,7 @@
 export interface CFourUIProps {
     rows: number;
     columns: number;
-    moves?: number[];
+    moves?: number[] | number[][];
     move_index?: number;
     circle_radius?: number;
     circle_margin?: number;
