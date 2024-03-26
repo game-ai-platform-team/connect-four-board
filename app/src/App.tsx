@@ -1,5 +1,5 @@
 import "./App.css";
-import CFourUIPlayable from "./package/CFourUIPlayable.tsx";
+import CFourUIPlayable from "./package/CFourUIPlayable";
 
 function App() {
     const gameMoves: number[] = []

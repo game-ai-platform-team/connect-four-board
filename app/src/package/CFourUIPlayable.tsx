@@ -19,7 +19,7 @@ const CFourUIPlayable = ({
     playMove: (move: number) => void;
 }) => {
     const [currentPlayer, setCurrentPlayer] = useState(1);
-
+    
     const handleColumnClick = (_: number, clickedColumn: number) => {
         const moveCount = gameMoves.filter(
             (move) => move === clickedColumn,
