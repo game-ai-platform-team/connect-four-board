@@ -52,6 +52,7 @@ function playMove(move: number) {
 
 #### Optional
 
+-   `active` (playable only): Is the playable board interactable (default `true`)
 -   `moves` (static only): An array of moves made in the game. Moves are represented as the index of the column (default: `[]`).
 -   `move_index`: Display moves in `moves` up to this value. Values below `0` show all moves (default: `-1`).
 -   `circle_radius`: The radius of the circles representing game pieces (default: `40`).
