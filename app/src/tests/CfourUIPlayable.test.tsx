@@ -1,5 +1,5 @@
 import { render, RenderResult, fireEvent } from "@testing-library/react";
-import CFourUIPlayable from "../components/CFourUIPlayable";
+import CFourUIPlayable from "../package/CFourUIPlayable";
 import { expect, test, describe, beforeEach } from "vitest";
 
 describe("CFourUIPlayable", () => {
