@@ -1,7 +1,7 @@
 export interface CFourUIProps {
     rows: number;
     columns: number;
-    moves?: number[];
+    moves?: number[] | number[][];
     move_index?: number;
     circle_radius?: number;
     circle_margin?: number;
@@ -42,15 +42,15 @@ const CFourUI = ({
     const style = { backgroundColor: background_color };
     const moveIndex = move_index;
 
-    const createBoardFromMoves = () => {
+    const createBoardFromMoves = (boardMoves: number[]) => {
         const board: number[][] = [];
 
         for (let i = 0; i <= columns; i++) {
             board.push(new Array(rows).fill(0));
         }
 
-        if (moves) {
-            moves.forEach((move, index) => {
+        if (boardMoves) {
+            boardMoves.forEach((move, index) => {
                 if (index >= moveIndex && moveIndex >= 0) {
                     return;
                 }
@@ -102,9 +102,7 @@ const CFourUI = ({
         return circleElement;
     };
 
-    const board = createBoardFromMoves();
-
-    const generateCircles = () => {
+    const generateCircles = (board: number[][]) => {
         const circles: JSX.Element[] = [];
         for (let columnIndex = 0; columnIndex < columns; columnIndex++) {
             for (let rowIndex = 0; rowIndex < rows; rowIndex++) {
@@ -128,6 +126,17 @@ const CFourUI = ({
         return circles;
     };
 
+    let circleArray: JSX.Element[] = [];
+    // Check if moves is number[] or number[][]
+    if (Array.isArray(moves) && Array.isArray(moves[0])) {
+        circleArray = generateCircles(moves as number[][]);
+    } else {
+        const boardFromMoves: number[][] = createBoardFromMoves(
+            moves as number[],
+        );
+        circleArray = generateCircles(boardFromMoves);
+    }
+
     return (
         <div id="cfour-board">
             <svg
@@ -136,7 +145,7 @@ const CFourUI = ({
                 xmlns="http://www.w3.org/2000/svg"
                 style={style}
             >
-                {generateCircles()}
+                {circleArray}
             </svg>
         </div>
     );

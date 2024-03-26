@@ -1,6 +1,6 @@
 {
   "name": "connect-four-board",
-  "version": "0.1.9",
+  "version": "0.2.0",
   "description": "Connect four board",
   "main": "index.js",
   "types": "dist/index.d.ts",
