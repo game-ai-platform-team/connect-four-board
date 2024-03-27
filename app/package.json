@@ -24,7 +24,8 @@
     "build": "react-scripts build",
     "eject": "react-scripts eject",
     "test": "vitest",
-    "test:run": "vitest run"
+    "test:run": "vitest run",
+    "coverage": "vitest run --coverage"
   },
   "eslintConfig": {
     "extends": [
