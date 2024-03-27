@@ -1,10 +1,13 @@
 {
   "name": "connect-four-board",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Connect four board",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "readme": "README.md",
+  "scripts": {
+    "build": "tsc --jsx react-native"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/game-ai-platform-team/connect-four-board.git"
