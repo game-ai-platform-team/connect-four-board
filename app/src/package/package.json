@@ -1,12 +1,12 @@
 {
   "name": "connect-four-board",
-  "version": "0.2.2",
+  "version": "0.2.3",
   "description": "Connect four board",
   "main": "index.js",
   "types": "dist/index.d.ts",
   "readme": "README.md",
   "scripts": {
-    "build": "tsc --jsx react-native"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",

@@ -1,4 +1,3 @@
-/// <reference types="react" />
 export interface CFourUIProps {
     rows: number;
     columns: number;
@@ -14,7 +13,7 @@ export interface CFourUIProps {
     onClick?: (row: number, column: number) => void;
 }
 declare const CFourUI: {
-    ({ rows, columns, moves, move_index, circle_radius, circle_margin, empty_color, background_color, player_a_color, player_b_color, highlight_color, onClick, }: CFourUIProps): import("react").JSX.Element;
+    ({ rows, columns, moves, move_index, circle_radius, circle_margin, empty_color, background_color, player_a_color, player_b_color, highlight_color, onClick, }: CFourUIProps): import("react/jsx-runtime").JSX.Element;
     defaultProps: Partial<CFourUIProps>;
 };
 export default CFourUI;

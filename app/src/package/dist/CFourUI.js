@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
 var defaultProps = {
     moves: [],
     move_index: -1,
@@ -53,19 +54,16 @@ var CFourUI = function (_a) {
         var isLastMove = columnCount === rows - row &&
             column ===
                 (useMoveIndex ? moves[moveIndex - 1] : moves[moves.length - 1]);
-        var circleElement = (<circle key={"".concat(row, "-").concat(column)} cx={column * circle_radius * 2 + circle_radius} cy={row * circle_radius * 2 + circle_radius} r={circle_radius - circle_margin} fill={fillColor} stroke={isLastMove ? highlight_color : undefined} strokeWidth={3}/>);
+        var circleElement = ((0, jsx_runtime_1.jsx)("circle", { cx: column * circle_radius * 2 + circle_radius, cy: row * circle_radius * 2 + circle_radius, r: circle_radius - circle_margin, fill: fillColor, stroke: isLastMove ? highlight_color : undefined, strokeWidth: 3 }, "".concat(row, "-").concat(column)));
         return circleElement;
     };
     var generateCircles = function (board) {
         var circles = [];
         var _loop_1 = function (columnIndex) {
             var _loop_2 = function (rowIndex) {
-                circles.push(<g key={"".concat(rowIndex, "-").concat(columnIndex)}>
-                        {getCircle(rowIndex, columnIndex, board)}
-                        <rect x={columnIndex * circle_radius * 2} y={rowIndex * circle_radius * 2} width={circle_radius * 2} height={circle_radius * 2} fill="transparent" onClick={function () {
-                        return onClick && onClick(rowIndex, columnIndex);
-                    }}/>
-                    </g>);
+                circles.push((0, jsx_runtime_1.jsxs)("g", { children: [getCircle(rowIndex, columnIndex, board), (0, jsx_runtime_1.jsx)("rect", { x: columnIndex * circle_radius * 2, y: rowIndex * circle_radius * 2, width: circle_radius * 2, height: circle_radius * 2, fill: "transparent", onClick: function () {
+                                return onClick && onClick(rowIndex, columnIndex);
+                            } })] }, "".concat(rowIndex, "-").concat(columnIndex)));
             };
             for (var rowIndex = 0; rowIndex < rows; rowIndex++) {
                 _loop_2(rowIndex);
@@ -85,11 +83,7 @@ var CFourUI = function (_a) {
         var boardFromMoves = createBoardFromMoves(moves);
         circleArray = generateCircles(boardFromMoves);
     }
-    return (<div id="cfour-board">
-            <svg width={columns * circle_radius * 2} height={rows * circle_radius * 2} xmlns="http://www.w3.org/2000/svg" style={style}>
-                {circleArray}
-            </svg>
-        </div>);
+    return ((0, jsx_runtime_1.jsx)("div", { id: "cfour-board", children: (0, jsx_runtime_1.jsx)("svg", { width: columns * circle_radius * 2, height: rows * circle_radius * 2, xmlns: "http://www.w3.org/2000/svg", style: style, children: circleArray }) }));
 };
 CFourUI.defaultProps = defaultProps;
 exports.default = CFourUI;

@@ -3,6 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
+var jsx_runtime_1 = require("react/jsx-runtime");
 var react_1 = require("react");
 var CFourUI_1 = __importDefault(require("./CFourUI"));
 var CFourUIPlayable = function (_a) {
@@ -29,8 +30,6 @@ var CFourUIPlayable = function (_a) {
             playMove(clickedColumn);
         }
     };
-    return (<div>
-            <CFourUI_1.default rows={rows} columns={columns} moves={gameMoves} move_index={move_index} circle_radius={circle_radius} circle_margin={circle_margin} background_color={background_color} empty_color={empty_color} player_a_color={player_a_color} player_b_color={player_b_color} highlight_color={highlight_color} onClick={handleColumnClick}/>
-        </div>);
+    return ((0, jsx_runtime_1.jsx)("div", { children: (0, jsx_runtime_1.jsx)(CFourUI_1.default, { rows: rows, columns: columns, moves: gameMoves, move_index: move_index, circle_radius: circle_radius, circle_margin: circle_margin, background_color: background_color, empty_color: empty_color, player_a_color: player_a_color, player_b_color: player_b_color, highlight_color: highlight_color, onClick: handleColumnClick }) }));
 };
 exports.default = CFourUIPlayable;
